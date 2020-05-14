@@ -8,7 +8,7 @@ def dsigmoid(y):
 
 class NeuralNetowrk:
     def __init__(self, noInputLayer, noHiddenLayer, noOutpuLayer):
-        ahrg.testCI()
+        print( 0 / 0)
         self.weights_ih = np.random.uniform(-1, 1, (noHiddenLayer, noInputLayer))
         self.weights_ho = np.random.uniform(-1, 1, (noOutpuLayer, noHiddenLayer))
         self.bias_h = np.random.uniform(-1, 1, (noHiddenLayer))
