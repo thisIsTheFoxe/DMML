@@ -8,7 +8,6 @@ setuptools.setup(
     description="An implementation of a muliy-layer percepron",
     long_description="",
     long_description_content_type="text/markdown",
-    install_requires=['numpy','pandas'],
     url="https://github.com/thisisthefoxe/DMML",
     classifiers=[
         "Programming Language :: Python :: 3",
