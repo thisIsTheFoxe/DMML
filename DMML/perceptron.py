@@ -1,17 +1,18 @@
 import numpy as np
 
+
 def sigmoid(x):
     return 1 / (1+np.exp(-x))
 
 def dsigmoid(y):
     return y * (1-y)
 
-class NeuralNetowrk:
-    def __init__(self, noInputLayer, noHiddenLayer, noOutpuLayer):
+class NeuralNetwork:
+    def __init__(self, noInputLayer, noHiddenLayer, noOutputLayer):
         self.weights_ih = np.random.uniform(-1, 1, (noHiddenLayer, noInputLayer))
-        self.weights_ho = np.random.uniform(-1, 1, (noOutpuLayer, noHiddenLayer))
+        self.weights_ho = np.random.uniform(-1, 1, (noOutputLayer, noHiddenLayer))
         self.bias_h = np.random.uniform(-1, 1, (noHiddenLayer))
-        self.bias_o = np.random.uniform(-1, 1, (noOutpuLayer))
+        self.bias_o = np.random.uniform(-1, 1, (noOutputLayer))
 
         self.learningRate = 0.1
         self.activationFunc = sigmoid
@@ -76,9 +77,7 @@ class NeuralNetowrk:
         print(f"Deltas = {ho_deltas, hi_deltas}")
 
 
-
-nn = NeuralNetowrk(2, 2, 1)
-
+nn = NeuralNetwork(2, 2, 1)
 
 train = [
     [[0,1],[1]], 
@@ -94,7 +93,7 @@ while x < 1000:
     nn.train(train[ix][0], train[ix][1])
 
 
-print(f"0,0: {nn.predict([0,0])}")
+print(f"0,0: {nn.predict([0,0])}")  
 print(f"0,1: {nn.predict([0,1])}")
 print(f"1,0: {nn.predict([1,0])}")
 print(f"1,1: {nn.predict([1,1])}")
