@@ -33,12 +33,12 @@ class NeuralNetwork:
 
         # run NN l1
         hidden = np.dot(self.weights_ih, inputs)
-        hidden = np.add(hidden, self.bias_h)
+        hidden += self.bias_h
         hidden = np.vectorize(self.activationFunc)(hidden)
 
         #run NN l2
         output = np.dot(self.weights_ho, hidden)
-        output = np.add(output, self.bias_o)
+        output += self.bias_o
         output = np.vectorize(self.activationFunc)(output)
         return output
 
@@ -48,27 +48,28 @@ class NeuralNetwork:
         # reshape array to an (n, 1) vertical matrix
         inputs = np.array(input_arr).reshape(-1, 1)
 
-        # run NN l1
+        # run NN l1 (fowrward)
         hidden = np.dot(self.weights_ih, inputs)
-        hidden = np.add(hidden, self.bias_h)
+        hidden += self.bias_h
         hidden = np.vectorize(self.activationFunc)(hidden)
 
         #run NN l2
         output = np.dot(self.weights_ho, hidden)
-        output = np.add(output, self.bias_o)
+        output += self.bias_o
         output = np.vectorize(self.activationFunc)(output)
 
+        # Backpropagation: 
         # - calc L2:
         targets = np.array(target_arr)
         output_errors = targets - output
 
         # gradient descent..
         gradient = np.vectorize(self.activationFuncD)(output)
-        gradient *= output_errors
-        gradient *= self.learningRate        
+        gradient = np.multiply(gradient, output_errors)
+        gradient *= self.learningRate
 
         # delta
-        hidden_T = np.matrix(hidden).transpose()
+        hidden_T = np.matrix(hidden).T
         ho_deltas = np.dot(gradient, hidden_T)
 
         self.bias_o += gradient
@@ -86,10 +87,10 @@ class NeuralNetwork:
 
         # delta
         input_T = np.matrix(inputs).T
-        hi_deltas = np.dot(hidden_gradient, input_T)
+        ih_deltas = np.dot(hidden_gradient, input_T)
 
-        self.bias_h = np.add(self.bias_h, hidden_gradient)
-        self.weights_ih += hi_deltas
+        self.bias_h += hidden_gradient
+        self.weights_ih += ih_deltas
 
 
 
@@ -115,7 +116,7 @@ while x < 50000:
     x += 1
     if x % 1000 == 0:
         print("Loop at:", x)
-    ix = np.random.randint(4)
+    ix = np.random.randint(0,4)
     nn.train(train[ix][0], train[ix][1])
 
 print("FinalNetwork:")
