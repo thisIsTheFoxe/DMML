@@ -1,21 +1,22 @@
 import numpy as np
 
+
 def sigmoid(x):
     return 1 / (1+np.exp(-x))
 
 def dsigmoid(y):
     return y * (1-y)
 
-class NeuralNetowrk:
-    def __init__(self, noInputLayer, noHiddenLayer, noOutpuLayer):
+class NeuralNetwork:
+    def __init__(self, noInputLayer, noHiddenLayer, noOutputLayer):
         # initiaize weights as (toNode, fromNode) matrices
         self.weights_ih = np.random.uniform(-1, 1, (noHiddenLayer, noInputLayer))
-        self.weights_ho = np.random.uniform(-1, 1, (noOutpuLayer, noHiddenLayer))
+        self.weights_ho = np.random.uniform(-1, 1, (noOutputLayer, noHiddenLayer))
 
         # random.uniform creates an array that's handled like a (1,2) matrix
         #  but we want a (2,1) one.. so, reshape
         self.bias_h = np.random.uniform(-1, 1, (noHiddenLayer)).reshape(-1, 1)
-        self.bias_o = np.random.uniform(-1, 1, (noOutpuLayer)).reshape(-1, 1)
+        self.bias_o = np.random.uniform(-1, 1, (noOutputLayer)).reshape(-1, 1)
 
         # default reaning rate
         self.learningRate = 0.1
@@ -94,7 +95,7 @@ class NeuralNetowrk:
 
 # - Example test: XOR (non-linear)
 
-nn = NeuralNetowrk(2, 4, 1)
+nn = NeuralNetwork(2, 4, 1)
 
 # print("Initial predictions:")
 # print(f"0 {nn.predict([0,0])}")
