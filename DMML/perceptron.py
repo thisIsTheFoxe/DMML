@@ -43,7 +43,7 @@ class NeuralNetwork:
         output = np.vectorize(self.activationFunc)(output)
 
         ## calc L2:
-        targets = np.array(target_arr)
+        targets = np.array(target_arr).reshape(-1,1)
         output_errors = targets - output
 
         gradient = np.vectorize(dsigmoid)(output)
