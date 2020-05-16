@@ -10,7 +10,7 @@ def dsigmoid(y):
 class NeuralNetwork:
     # layers is an array of numbers, indicating the number of nodes for each layer
     # where layers[0] is the input and layers[-1] the output layer
-    def __init__(self, layers):
+    def __init__(self, *layers):
         self.weights = []
         self.bias = []
 
@@ -187,7 +187,9 @@ class NeuralNetwork:
 
 # - Example test: XOR (non-linear)
 
-nn = NeuralNetwork([2,3,4,1])
+
+"""
+nn = NeuralNetwork(2,3,4,1)
 
 train = [
     [[0,0],[0]], 
@@ -202,20 +204,20 @@ x = 0
 # print(f"1 {nn.predict([0,1])}")
 # print(f"1 {nn.predict([1,0])}")
 # print(f"0 {nn.predict([1,1])}")
-while x < 50000:
+while x < 10000:
     x += 1
     if x % 1000 == 0:
         print("Loop at:", x)
     ix = np.random.randint(0,4)
     nn.train(train[ix][0], train[ix][1])
 
-# print(f"0 {nn.predict([0,0])}")
-# print(f"1 {nn.predict([0,1])}")
-# print(f"1 {nn.predict([1,0])}")
-# print(f"0 {nn.predict([1,1])}")
+print(f"0 {nn.predict([0,0])}")
+print(f"1 {nn.predict([0,1])}")
+print(f"1 {nn.predict([1,0])}")
+print(f"0 {nn.predict([1,1])}")
 
 
-"""
+# - old
 nn = NeuralNetwork(2,4,1)
 
 x = 0
