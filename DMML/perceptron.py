@@ -69,7 +69,7 @@ class NeuralNetwork:
         gradient *= self.learningRate
 
         # delta
-        hidden_T = np.matrix(hidden).T
+        hidden_T = hidden.T
         ho_deltas = np.dot(gradient, hidden_T)
 
         self.bias_o += gradient
@@ -78,15 +78,15 @@ class NeuralNetwork:
         # - calc L1
         hidden_weight_T = self.weights_ho.transpose()
         hidden_errors = np.dot(hidden_weight_T, output_errors)
-        hidden_errors = np.matrix(hidden_errors)
+        hidden_errors = np.array(hidden_errors)
 
         # gradient descent..
-        hidden_gradient = np.matrix(np.vectorize(self.activationFuncD)(hidden))
+        hidden_gradient = np.vectorize(self.activationFuncD)(hidden)
         hidden_gradient = np.multiply(hidden_gradient, hidden_errors)
         hidden_gradient *= self.learningRate
 
         # delta
-        input_T = np.matrix(inputs).T
+        input_T = inputs.T
         ih_deltas = np.dot(hidden_gradient, input_T)
 
         self.bias_h += hidden_gradient
