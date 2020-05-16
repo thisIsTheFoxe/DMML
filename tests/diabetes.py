@@ -22,7 +22,7 @@ train, _, test = train_validate_test_split(data, .8, 0)
 # print(train.loc[1][0:-1])
 
 print("- NeuralNetwork")
-nn = NeuralNetwork(8, 4, 10, 1)
+nn = NeuralNetwork(8, 10, 1)
 
 print("\n TRAIN \n")
 for ix, row in train.iterrows():
