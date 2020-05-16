@@ -73,7 +73,7 @@ class NeuralNetwork:
         gradient *= self.learningRate
 
         # delta for last layer
-        prevOut_T = np.matrix(prevLayer[-2]).T
+        prevOut_T = prevLayer[-2].T
         delta = np.dot(gradient, prevOut_T)
 
         self.bias[-1] += gradient
@@ -85,7 +85,6 @@ class NeuralNetwork:
             # calculate error (from previous layer to this one)
             current_weight_T = self.weights[curernt_layer+1].transpose()
             current_error = np.dot(current_weight_T, current_error)
-            current_error = np.matrix(current_error)
 
             # calculate gradient descent
             gradient = np.vectorize(self.activationFuncD)(prevLayer[curernt_layer+1])
@@ -93,7 +92,7 @@ class NeuralNetwork:
             gradient *= self.learningRate
 
             # delta
-            prevOut_T = np.matrix(prevLayer[curernt_layer]).T
+            prevOut_T = prevLayer[curernt_layer].T
             delta = np.dot(gradient, prevOut_T)
 
             self.bias[curernt_layer] += gradient
