@@ -1,4 +1,4 @@
-from perceptron import NeuralNetwork
+from NeuralNetwork import NeuralNetwork
 
 OR = [
     [[0,0],[0]], 

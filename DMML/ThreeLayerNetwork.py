@@ -1,5 +1,5 @@
 import numpy as np
-
+from warnings import warn
 
 def sigmoid(x):
     return 1 / (1+np.exp(-x))
@@ -7,9 +7,14 @@ def sigmoid(x):
 def dsigmoid(y):
     return y * (1-y)
 
+
+# DEPRECATED! Use NeuralNetwork instead
+# A NN with one input, one hidden and one output layer.
 class ThreeLayerNeuralNetwork:
 
     def __init__(self, noInputLayer, noHiddenLayer, noOutputLayer):
+
+        warn("`ThreeLayerNeuralNetwork` is deprecated. Please use `NeuralNetwork` instead.")
         # initiaize weights as (toNode, fromNode) matrices
         self.weights_ih = np.random.uniform(-1, 1, (noHiddenLayer, noInputLayer))
         self.weights_ho = np.random.uniform(-1, 1, (noOutputLayer, noHiddenLayer))
@@ -98,6 +103,7 @@ class ThreeLayerNeuralNetwork:
 
 """
 nn = ThreeLayerNeuralNetwork(2,4,1)
+nn.train([1,2],[1])
 
 train = [
     [[0,0],[0]], 

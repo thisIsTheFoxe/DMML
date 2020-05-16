@@ -7,6 +7,7 @@ def sigmoid(x):
 def dsigmoid(y):
     return y * (1-y)
 
+# A general NN with specifiable amout of layers and perceptrons per layer
 class NeuralNetwork:
     # layers is an array of numbers, indicating the number of nodes for each layer
     # where layers[0] is the input and layers[-1] the output layer
