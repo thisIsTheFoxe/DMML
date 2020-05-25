@@ -57,13 +57,16 @@ After that we again pick 10 random points and see how well out network performs.
 ```
 Left we see the output of the network and right the actual result. Apart from the second to last, all values look good. Intuitively, (0 0) means the point is not in the circle and above the quadratic plot and (1 1) means the point is in the circle and below the quadratic plot. 
 
+![plot of both functions](/resources/function.png)
+
 ### Iris Dataset
 The Iris dataset is a popular dataset of Iris flowers. It contains measurements from 150 flowers of 3 different species. 
 
-To work with that dataset we first need to split it into training and test data. So we split out data according to the 3 species. Then we shuffle each of the three. Then we take 5 samples from each one for out test data and shuffle everything in test and trainig data together. Example:
-```
-.....
-```
+To work with that dataset we first need to split it into training and test data. So we split out data according to the 3 species. Then we shuffle each of the three. Then we take 5 samples from each one for out test data and shuffle everything in test and trainig data together.
+
+One problem in this case is, that not all the data is equally prioritized. E.g. sepalLength and sepalWidth have much higher values and therefore are seen by the neural network as 'more important'. 
+
+![wikipedia plot of the iris set](/resources/iris.png)
 
 ### Diabetes
-This is a dataset about people with diabetis. When looking at the data tho, one can recognize, that only about 1/3 of the people tested have diabetes. Plus, it is unclean meaning not all the data is trustworthy (for some: BloodPresuare = 0, BMI = 0). For this reason, just taking the set, splitting it randomly and working with that, results in a the network classifying almost every patient with a 30% probability of having diabetes. 
+This is a dataset about people with diabetis. When looking at the data tho, one can recognize that only about 1/3 of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPresuare = 0, BMI = 0). For this reason, just taking the set, splitting it randomly and working with that, results in a the network classifying almost every patient with a 30% probability of having diabetes. 
