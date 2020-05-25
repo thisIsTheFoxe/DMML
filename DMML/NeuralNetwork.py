@@ -53,7 +53,7 @@ class NeuralNetwork:
         prevLayer = [np.array(startLayer).reshape(-1, 1)]
 
         # for each layer n calculate the output and add it to the array
-        for curernt_layer in range(len(self.weights)):
+        for current_layer in range(len(self.weights)):
             layerOut = np.dot(self.weights[curernt_layer], prevLayer[curernt_layer])
             layerOut += self.bias[curernt_layer]
             layerOut = np.vectorize(self.activationFunc)(layerOut)
