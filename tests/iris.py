@@ -1,4 +1,4 @@
-from DMML.perceptron import NeuralNetwork
+from DMML.NeuralNetwork import NeuralNetwork
 import pandas as pd
 import numpy as np
 
@@ -23,7 +23,7 @@ def formatResult(name):
 # print(train.loc[1][0:-1])
 
 print("- NeuralNetwork")
-nn = NeuralNetwork(4, 64, 3)
+nn = NeuralNetwork(4, 10, 50, 3)
 
 print("\n TRAIN \n")
 for ix, row in trainingData.iterrows():

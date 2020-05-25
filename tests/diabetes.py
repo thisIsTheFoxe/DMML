@@ -1,4 +1,4 @@
-from DMML.perceptron import NeuralNetwork
+from DMML.NeuralNetwork import NeuralNetwork
 import pandas as pd
 import numpy as np
 
