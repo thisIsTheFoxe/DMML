@@ -80,7 +80,7 @@ class NeuralNetwork:
         self.weights[-1] += delta
 
         # for each layer n, starting with the 2nd to last, going backwards:
-        for curernt_layer in range(len(self.weights)-2, -1, -1):
+        for current_layer in range(len(self.weights)-2, -1, -1):
 
             # calculate error (from previous layer to this one)
             current_weight_T = self.weights[curernt_layer+1].transpose()
