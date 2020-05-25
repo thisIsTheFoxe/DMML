@@ -34,12 +34,14 @@ class NeuralNetwork:
 
     def predict(self, startLayer):
         # the layer n-1, starting with the input-layer
+        # `.reshape(-1, 1)` is neccissary to transfrom the array (1,x) to a vector (x,1)
         prevLayer = np.array(startLayer).reshape(-1, 1)
 
+        # forward through the netowrk:
         # for each layer n, calculate it's output for the next layer
         for current_layer in range(len(self.weights)):
-            layerOut = np.dot(self.weights[curernt_layer], prevLayer)
-            layerOut += self.bias[curernt_layer]
+            layerOut = np.dot(self.weights[current_layer], prevLayer)
+            layerOut += self.bias[current_layer]
             layerOut = np.vectorize(self.activationFunc)(layerOut)
 
             prevLayer = layerOut
@@ -54,8 +56,8 @@ class NeuralNetwork:
 
         # for each layer n calculate the output and add it to the array
         for current_layer in range(len(self.weights)):
-            layerOut = np.dot(self.weights[curernt_layer], prevLayer[curernt_layer])
-            layerOut += self.bias[curernt_layer]
+            layerOut = np.dot(self.weights[current_layer], prevLayer[current_layer])
+            layerOut += self.bias[current_layer]
             layerOut = np.vectorize(self.activationFunc)(layerOut)
 
             prevLayer.append(layerOut)
@@ -83,23 +85,23 @@ class NeuralNetwork:
         for current_layer in range(len(self.weights)-2, -1, -1):
 
             # calculate error (from previous layer to this one)
-            current_weight_T = self.weights[curernt_layer+1].transpose()
+            current_weight_T = self.weights[current_layer+1].transpose()
             current_error = np.dot(current_weight_T, current_error)
 
             # calculate gradient descent
-            gradient = np.vectorize(self.activationFuncD)(prevLayer[curernt_layer+1])
+            gradient = np.vectorize(self.activationFuncD)(prevLayer[current_layer+1])
             gradient = np.multiply(gradient, current_error)
             gradient *= self.learningRate
 
             # delta
-            prevOut_T = prevLayer[curernt_layer].T
+            prevOut_T = prevLayer[current_layer].T
             delta = np.dot(gradient, prevOut_T)
 
-            self.bias[curernt_layer] += gradient
-            self.weights[curernt_layer]  += delta
+            self.bias[current_layer] += gradient
+            self.weights[current_layer]  += delta
 
 
-# - Example test: XOR (non-linear)
+# - Example test: XOR (non-linear seperable)
 
 """
 nn = NeuralNetwork(2,3,4,1)
