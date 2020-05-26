@@ -14,7 +14,7 @@ A multi-layer perceeptron is basically a fully connected neural network with at 
 `from DMML.NeuralNetwork import NeuralNetwork`
 3. Create a new neural network  
 `nn = NeuralNetwork(<numberOfInputNodes>, <numberOfHiddenNodesLayer1>, ..., <numberOfOuputNodes>)`
-4. (optional) adjust learning rate and activation function  
+4. (optional) adjust learning rate and activation function, defaults to 0.1 and Sigmoid.
 ```
 nn.learningRate = <0-1>
 nn.activationFunc = <some function>
@@ -31,6 +31,7 @@ This is a neural network with exactly 3 layers (exactly 1 hidden layer). It was 
 ## CI
 There are two CI tests. The first, trivial test just prooves that the CI is working as expected. The second test creates a singlelayer perceptron that solves the linear seperable OR-problem. 
 
+![Python application](https://github.com/thisIsTheFoxe/DMML/workflows/Python%20application/badge.svg)
 
 ## Testing the Multi-Layer-Perceptron
 The tests can be found in DMML/tests.
@@ -69,4 +70,10 @@ One problem in this case is, that not all the data is equally prioritized. E.g. 
 ![wikipedia plot of the iris set](/resources/iris.png)
 
 ### Diabetes
-This is a dataset about people with diabetis. When looking at the data tho, one can recognize that only about 1/3 of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPresuare = 0, BMI = 0). For this reason, just taking the set, splitting it randomly and working with that, results in a the network classifying almost every patient with a 30% probability of having diabetes. 
+This is a dataset about people with diabetes. When looking at the data though, one can recognize that only about ⅓ of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPressure = 0, BMI = 0). For this reason, the network doesn't perform as well with the unsanitized data. 
+
+
+## Resources
+[3B1B - Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+[CodingTrain/Toy-Neural-Network-JS](https://github.com/CodingTrain/Toy-Neural-Network-JS)
+[Iris Dataset](https://forge.scilab.org/index.php/p/rdataset/source/tree/master/csv/datasets/iris.csv)
