@@ -70,7 +70,7 @@ One problem in this case is, that not all the data is equally prioritized. E.g. 
 ![wikipedia plot of the iris set](/resources/iris.png)
 
 ### Diabetes
-This is a dataset about people with diabetis. When looking at the data tho, one can recognize that only about 1/3 of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPresuare = 0, BMI = 0). For this reason, the network doesn't perform as well with the unsanitized data. 
+This is a dataset about people with diabetes. When looking at the data though, one can recognize that only about ⅓ of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPressure = 0, BMI = 0). For this reason, the network doesn't perform as well with the unsanitized data. 
 
 
 ## Resources
