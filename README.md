@@ -2,13 +2,13 @@
 This is a project for the DMML lecture in the 6th semester of the Informatics degree at the Baden-Wuerttemberg Cooperative State University (DHBW) Stuttgart. The project was part of multiple home-work projects during the COVID-pandemic in 2020. 
 
 ## Implementation of a Multi-Layer-Perceptron (MLP)
-A multi-layer perceeptron is basically a fully connected neural network with at least 3 layers: input, hidden and output. There may be multiple hidden layers and each layer can have multiple nodes.
+A multi-layer perceptron is basically a fully connected neural network with at least 3 layers: input, hidden and output. There may be multiple hidden layers and each layer can have multiple nodes.
 
 ![figure of a 3 layer network](https://miro.medium.com/max/1400/1*-IPQlOd46dlsutIbUq1Zcw.png)
 
 ### Usage
 
-1. Install all dependecies  
+1. Install all dependencies  
 `pip install -r requirements.txt`
 2. Import the neural network  
 `from DMML.NeuralNetwork import NeuralNetwork`
@@ -29,7 +29,7 @@ nn.activationFuncD = <derivative of that function>
 This is a neural network with exactly 3 layers (exactly 1 hidden layer). It was the first, simple implementation of a MLP. The functionality is very similar to the new `NeuralNetwork`. Therefore the general `NeuralNetwork` should be used instead. 
 
 ## CI
-There are two CI tests. The first, trivial test just prooves that the CI is working as expected. The second test creates a single-layer perceptron that solves the linear seperable OR-problem. 
+There are two CI tests. The first, trivial test just proves that the CI is working as expected. The second test creates a single-layer perceptron that solves the linear separable OR-problem. 
 
 ![Python application](https://github.com/thisIsTheFoxe/DMML/workflows/Python%20application/badge.svg)
 
@@ -41,7 +41,7 @@ For this test two functions are defined:
 1. for a Unit Circle (scaled by 0.5)
 2. a default quadratic function
 
-Now, 50.000 random points are picked were x and y are between -1 and 1. The network should be trained to recognize if points are in a certain area, defined by the functions. The first output indicates whether the point is within the circle. The second function shows if the point lies below the plot of the quadratic function. (Outputs relate to boolean values: 0 = false; 1 = true)
+Now, 50.000 random points are picked where x and y are between -1 and 1. The network should be trained to recognize if points are in a certain area, defined by the functions. The first output indicates whether the point is within the circle. The second function shows if the point lies below the plot of the quadratic function. (Outputs relate to boolean values: 0 = false; 1 = true)
 
 After that, another 10 random points are picked and given to the network to classify. Example:
 ```
@@ -56,21 +56,21 @@ After that, another 10 random points are picked and given to the network to clas
 [0.99987619] [0.52585137] <> 1 0
 [0.99996185] [0.44944496] <> 1 0
 ```
-Left is the output of the network and right the actual result (or target). Apart from the second to last, all values look good. Intuitively, (0 0) means the point is not in the circle and above the quadratic plot and (1 1) means the point is in the circle and below the quadratic plot. 
+Left is the output of the network and right the actual result (or target). Apart from the second to last prediction, all values look good. Intuitively, (0 0) means the point is not in the circle and above the quadratic plot and (1 1) means the point is in the circle and below the quadratic plot. 
 
 ![plot of both functions](/resources/function.png)
 
 ### Iris Dataset
 The Iris dataset is a popular dataset of Iris flowers. It contains measurements from 150 flowers of 3 different species. 
 
-To work with that dataset, it first needs to be split into training and testing data. The set is split according to the 3 species. Then each of the three is shuffled. Finally, 5 samples are taken out from each one for the test data and everything is shuffled together in test and trainig data.
+To work with that dataset, it first needs to be split into training and testing data. The set is split according to the 3 species. Then each of the three is shuffled. Finally, 5 samples are taken out from each one for the testing data and everything is shuffled together in test and training data.
 
-One problem in this case is, that not all the data is equally prioritized. E.g. sepalLength and sepalWidth have much higher values and therefore are seen by the neural network as 'more important'. 
+One problem in this case is that not all the data is equally prioritized. E.g. sepalLength and sepalWidth have much higher values and therefore are seen by the neural network as 'more important'. 
 
 ![wikipedia plot of the iris set](/resources/iris.png)
 
 ### Diabetes
-This is a dataset about people with diabetis. When looking at the data tho, one can recognize that only about 1/3 of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPresuare = 0, BMI = 0). For this reason, the network doesn't perform as well with the unsanitized data. 
+This is a dataset about people with diabetes. When looking at the data though, one can recognize that only about ⅓ of the people tested positive for diabetes. Plus, the data is unclean meaning not all the data is trustworthy (for example: BloodPressure = 0, BMI = 0). For this reason, the network doesn't perform as well with the unsanitized data. 
 
 
 ## Resources
